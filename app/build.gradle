@@ -52,3 +52,12 @@ dependencies {
     implementation 'net.java.dev.jna:jna:5.13.0@aar'
     implementation 'com.alphacephei:vosk-android:0.3.47'
 }
+
+
+// Vosk brings legacy split Kotlin JDK artifacts. Newer AndroidX/Media3
+// dependencies already include these classes in kotlin-stdlib, so exclude
+// the obsolete split artifacts to prevent duplicate-class failures.
+configurations.configureEach {
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+}
