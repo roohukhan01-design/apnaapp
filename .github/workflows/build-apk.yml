@@ -70,6 +70,9 @@ jobs:
           get tajawal Tajawal-Black.ttf
           ls -la
 
+      - name: Prepare validation asset for tests
+        run: cp shared/core/validate.js app/src/main/assets/validate.js
+
       - name: Run JavaScript validation tests
         run: |
           node shared/test/validate.test.js
